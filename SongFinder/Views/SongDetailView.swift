@@ -15,6 +15,6 @@ struct SongDetailView: View {
 
 struct SongDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SongDetailView()
+        SearchView()
     }
 }
