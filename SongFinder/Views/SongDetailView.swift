@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct SongDetailView: View {
+    // MARK: Stored properties
+    // Song to show in this view
+    var songToShow: Song
+    // MARK: Computed properties
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            HStack {
+                RemoteImageView(ur10fImageToShow: songToShow.artworkUr1100)
+                VStack (alignment: .leading) {
+                    Text (songToShow.trackName)
+                        . font (.title)
+                    Text (songToShow.artistName)
+                        .font (.subheadline)
+                }
+            }
+        }
     }
 }
-
-struct SongDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
-    }
-}
+AudioPlaverView(url0fAudioToPlay: songToShow.previewUrl) •padding(.top, 20)
+.padding (.horizontal, 5)

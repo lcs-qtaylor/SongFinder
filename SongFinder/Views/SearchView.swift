@@ -19,24 +19,31 @@ struct SearchView: View {
             
             List (foundSongs, id: \.trackId) { currentSong in
                 
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text (currentSong.trackName)
-                            .bold ()
-                        Spacer ()
+                NavigationLink(destination: { SongDetailView(songToShow: currentSong)
+                }, label: {
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text (currentSong.trackName)
+                                .bold ()
+                            Spacer ()
+                        }
+                        Text (currentSong.collectionName)
+                            .italic()
+                        
+                        Text (currentSong.artistName)
+                        
                     }
-                    Text (currentSong.collectionName)
-                        .italic()
-                    
-                    Text (currentSong.artistName)
-                    
-                }
-                .border(.purple)
+                })
             }
+            .navigationTitle("Song Finder")
             .searchable(text: $searchText)
-            .task {
-    
-                foundSongs = await NetworkService.fetch(resultsFor: "radioactive")
+            .onChange(of: searchText) {newSearchText in
+                
+                Task {
+                    
+                    foundSongs = await NetworkService.fetch(resultsFor: searchText)
+                }
             }
         }
     }
