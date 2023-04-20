@@ -11,7 +11,8 @@ import SwiftUI
 struct SongFinderApp: App {
     var body: some Scene {
         WindowGroup {
-            SongDetailView(songToShow: exampleSong)
+            SearchView()
+        
         }
     }
 }
