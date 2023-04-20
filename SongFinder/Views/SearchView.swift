@@ -10,28 +10,34 @@ import SwiftUI
 struct SearchView: View {
     // MARK: Stored properties
     @State var foundSongs: [Song] = []
+    
+    @State var searchText = ""
     // MARK: Computed properties
     var body: some View {
         
-        List (foundSongs, id: \.trackId) { currentSong in
+        NavigationView {
             
-            VStack(alignment: .leading) {
-                HStack {
-                    Text (currentSong.trackName)
-                        .bold ()
-                    Spacer ()
+            List (foundSongs, id: \.trackId) { currentSong in
+                
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text (currentSong.trackName)
+                            .bold ()
+                        Spacer ()
+                    }
+                    Text (currentSong.collectionName)
+                        .italic()
+                    
+                    Text (currentSong.artistName)
+                    
                 }
-                Text (currentSong.collectionName)
-                    .italic()
-                
-            Text (currentSong.artistName)
-                
+                .border(.purple)
             }
-            .border(.purple)
-        }
-        .task {
-            
-            foundSongs = await NetworkService.fetch(resultsFor: "radioactive")
+            .searchable(text: $searchText)
+            .task {
+    
+                foundSongs = await NetworkService.fetch(resultsFor: "radioactive")
+            }
         }
     }
 }

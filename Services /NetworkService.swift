@@ -19,6 +19,7 @@ struct NetworkService {
     // won't "freeze up" while this function does it's job.
     static func fetch(resultsFor songName: String) async -> [Song] {
         
+        let cleanedUpSongName = songName.lowercased ().replacingOccurrences (of: " ", with: "+")
         // 1. Attempt to create a URL from the address provided
         let endpoint = "https://itunes.apple.com/search?term=\(cleanedUpSongName)&entity=song&limit=20"
         guard let url = URL(string: endpoint) else {
