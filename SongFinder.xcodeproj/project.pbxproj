@@ -52,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				969FA6E329F182BE00F7A1E1 /* SongFinderApp.swift */,
+				969FA6F429F1834200F7A1E1 /* Model */,
 				969FA6F129F182CA00F7A1E1 /* Views */,
 				969FA6E729F182BF00F7A1E1 /* Assets.xcassets */,
 				969FA6E929F182BF00F7A1E1 /* Preview Content */,
@@ -73,6 +74,13 @@
 				969FA6F229F182E000F7A1E1 /* SongDetailView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		969FA6F429F1834200F7A1E1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
